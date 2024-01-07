@@ -1,5 +1,4 @@
 export PATH=/opt/homebrew/bin:$PATH
-eval "$(nodenv init -)"
 ## start profile
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 ## end profile
@@ -33,6 +32,7 @@ alias lastone="git checkout -"
 alias amendit="git commit --amend"
 alias lintit="bundle exec standardrb --fix && bundle exec erblint app/views app/components  -a && yarn lint:fix"
 alias mergemain="git checkout main&&git pull&&git checkout -&&git merge main"
+alias part2="cat day_${1:-$(date '+%e')}_1.rb >> day_${1:-$(date '+%e')}_2.rb"
 export PATH=$PATH:/Users/username/src/sre/kubectl-plugins
 export GOPATH=$HOME/go
 export GOROOT="$(brew --prefix golang)/libexec"
@@ -53,3 +53,6 @@ autoload -Uz compinit && compinit
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+eval "$(rbenv init - zsh)"
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
