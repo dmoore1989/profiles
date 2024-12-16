@@ -191,6 +191,9 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Open new vertical window' })
 
+-- ensure we stay in visual mode after shifting
+vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -390,6 +393,12 @@ require('lazy').setup {
         --   },
         -- },
         -- pickers = {}
+        defaults = {
+          path_display = {
+            'truncate',
+          },
+        },
+
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -641,7 +650,7 @@ require('lazy').setup {
         cssls = {},
         ts_ls = {},
         yamlls = {},
-        vuels = {},
+        volar = {},
         sqls = {},
         lua_ls = {
           -- cmd = {...},
@@ -860,7 +869,7 @@ require('lazy').setup {
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-      vim.cmd.colorscheme 'tokyonight-moon'
+      vim.cmd.colorscheme 'catppuccin'
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -979,11 +988,10 @@ require('lazy').setup {
       lazy = '💤 ',
     },
   },
+  { 'catppuccin/nvim', name = 'catppuccin', priority = 1000 },
 }
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
 --
--- netrw bindings
-vim.keymap.set('n', '<C-e>', ':Lexplore<CR>', { desc = 'Open netrw file directory' })
 
--- Copilot bindings
+vim.g.copilot_node_command = '/Users/douglasmoore/.asdf/installs/nodejs/23.3.0/bin/node'
