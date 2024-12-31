@@ -174,7 +174,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-
+vim.keymap.set('n', '<leader>z', ':term<CR>', { desc = 'Open a new [T]erminal' })
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -190,6 +190,10 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Open new vertical window' })
+
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', { desc = 'Go to [N]ext buffer' })
+vim.keymap.set('n', '<leader>b', ':bprev<CR>', { desc = 'Go to Previous [B]uffer' })
+vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = '[X] Close buffer' })
 
 -- ensure we stay in visual mode after shifting
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
@@ -231,6 +235,7 @@ vim.opt.rtp:prepend(lazypath)
 --    :Lazy update
 --
 -- NOTE: Here is where you install your plugins.
+---@diagnostic disable-next-line: missing-fields
 require('lazy').setup {
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -642,15 +647,30 @@ require('lazy').setup {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-        ruby_lsp = {},
-        rubocop = {},
+        ruby_lsp = {
+          cmd = { 'ruby-lsp' },
+        },
+        rubocop = {
+          cmd = { 'bundle', 'exec', 'rubocop', '--lsp' },
+        },
         sorbet = {},
-        eslint = {},
+        eslint = {
+          cmd = { 'npm', 'run', 'lint', '--stdio' },
+        },
         html = {},
         cssls = {},
         ts_ls = {},
         yamlls = {},
-        volar = {},
+        volar = {
+          -- add filetypes for typescript, javascript and vue
+          filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+          init_options = {
+            vue = {
+              -- disable hybrid mode
+              hybridMode = false,
+            },
+          },
+        },
         sqls = {},
         lua_ls = {
           -- cmd = {...},
