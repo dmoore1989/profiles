@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('n', '<leader>z', ':term<CR>', { desc = 'Open a new [T]erminal' })
+vim.keymap.set('n', '<leader>z', ':term<CR>', { silent = true, desc = 'Open a new [T]erminal' })
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -32,9 +32,9 @@ vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower win
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Open new vertical window' })
 
-vim.keymap.set('n', '<leader>n', ':bnext<CR>', { desc = 'Go to [N]ext buffer' })
-vim.keymap.set('n', '<leader>b', ':bprev<CR>', { desc = 'Go to Previous [B]uffer' })
-vim.keymap.set('n', '<leader>x', ':bd<CR>', { desc = '[X] Close buffer' })
+vim.keymap.set('n', '<leader>n', ':bnext<CR>', { silent = true, desc = 'Go to [N]ext buffer' })
+vim.keymap.set('n', '<leader>b', ':bprev<CR>', { silent = true, desc = 'Go to Previous [B]uffer' })
+vim.keymap.set('n', '<leader>x', ':bd<CR>', { silent = true, desc = '[X] Close buffer' })
 
 -- ensure we stay in visual mode after shifting
 vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
