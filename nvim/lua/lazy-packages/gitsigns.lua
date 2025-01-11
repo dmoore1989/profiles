@@ -13,5 +13,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       topdelete = { text = '‾' },
       changedelete = { text = '~' },
     },
+    on_attach = require 'lazy-packages.git-mappings',
   },
 }

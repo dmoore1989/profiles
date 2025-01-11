@@ -31,14 +31,15 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Open new vertical window' })
+vim.keymap.set('n', '<leader>s', '<C-w>s', { desc = 'Open new horizontal window' })
 
 vim.keymap.set('n', '<leader>n', ':bnext<CR>', { silent = true, desc = 'Go to [N]ext buffer' })
 vim.keymap.set('n', '<leader>b', ':bprev<CR>', { silent = true, desc = 'Go to Previous [B]uffer' })
 vim.keymap.set('n', '<leader>x', ':bd<CR>', { silent = true, desc = '[X] Close buffer' })
 
 -- ensure we stay in visual mode after shifting
-vim.api.nvim_set_keymap('v', '<', '<gv', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('v', '>', '>gv', { noremap = true, silent = true })
+vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
+vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
