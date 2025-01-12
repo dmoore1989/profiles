@@ -33,6 +33,7 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       end, { desc = 'Gitsigns [R]eset hunks selected' })
       map('n', '<leader>gS', gitsigns.stage_buffer, { desc = 'Gitsigns [S]tage buffer' })
       map('n', '<leader>gu', gitsigns.undo_stage_hunk, { desc = 'Gitsigns [U]ndo stage hunk' })
+      map('n', '<leader>gU', gitsigns.reset_buffer_index, { desc = 'Gitsigns [U]ndo stage buffer' })
       map('n', '<leader>gR', gitsigns.reset_buffer, { desc = 'Gitsigns [R]eset buffer' })
       map('n', '<leader>gp', gitsigns.preview_hunk, { desc = 'Gitsigns [P]review hunk' })
       map('n', '<leader>gb', function()
@@ -42,21 +43,22 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       map('n', '<leader>gd', gitsigns.diffthis, { desc = 'Gitsigns [D]iff this' })
       map('n', '<leader>gD', function()
         gitsigns.diffthis '~'
-      end, { desc = 'Gitsigns [D]iff this' })
+      end, { desc = 'Gitsigns [D]iff this origin' })
       map('n', '<leader>ge', gitsigns.toggle_deleted, { desc = 'Gitsigns toggle d[E]leted' })
       map('n', '<leader>gB', gitsigns.blame, { desc = 'Gitsigns [B]lame' })
+      map('n', '<leader>gP', gitsigns.preview_hunk_inline, { desc = 'Gitsigns [P]review hunk inline' })
 
       -- fugitive keymaps
       -- vim.keymap.set('n', '<leader>gs', ':G<CR>', { silent = true, desc = 'Git [S]tatus' })
       -- vim.keymap.set('n', '<leader>gd', ':G diff<CR>', { silent = true, desc = 'Git [D]iff' })
-      -- vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':GBrowse<CR>', { silent = true, desc = 'View on Git[H]ub' })
+      vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':GBrowse<CR>', { silent = true, desc = 'View on Git[H]ub' })
     end,
-    -- signs = {
-    --   add = { text = '+' },
-    --   change = { text = '~' },
-    --   delete = { text = '_' },
-    --   topdelete = { text = '‾' },
-    --   changedelete = { text = '~' },
-    -- },
+    signs = {
+      add = { text = '+' },
+      change = { text = '~' },
+      delete = { text = '_' },
+      topdelete = { text = '‾' },
+      changedelete = { text = '~' },
+    },
   },
 }
