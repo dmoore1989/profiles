@@ -48,10 +48,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       map('n', '<leader>gD', function()
         gitsigns.diffthis '~'
       end, { desc = 'Gitsigns [D]iff this origin' })
-
-      -- fugitive keymaps
-      vim.keymap.set('n', '<leader>gg', ':Git<CR>', { silent = true, desc = 'Pull up Git status tool' })
-      vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':GBrowse main:%<CR>', { silent = true, desc = 'View on Git[H]ub' })
     end,
     signs = {
       add = { text = '+' },

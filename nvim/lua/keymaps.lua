@@ -53,6 +53,10 @@ vim.keymap.set('n', '<leader>x', ':bd<CR>', { silent = true, desc = '[X] Close b
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
 vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 
+-- fugitive keymaps
+vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = 'Pull up [G]it status tool' })
+vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':GBrowse main:%<CR>', { silent = true, desc = 'View on Git[H]ub' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
