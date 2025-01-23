@@ -15,7 +15,20 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.keymap.set('n', '<leader>z', ':term<CR>', { silent = true, desc = 'Open a new [T]erminal' })
+vim.keymap.set('n', '<leader>z', function()
+  -- iterate through the list of buffers
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    -- get the buffer type
+    local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
+    -- open the buffer if it's a terminal
+    if buftype == 'terminal' then
+      vim.api.nvim_set_current_buf(buf)
+      return
+    end
+  end
+  -- if no terminal buffer is found, open a new terminal
+  vim.cmd 'term'
+end, { silent = true, desc = 'Open a new [T]erminal' })
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
