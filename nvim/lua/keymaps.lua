@@ -48,6 +48,7 @@ vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Open new vertical window' }
 vim.keymap.set('n', '<leader>n', ':bnext<CR>', { silent = true, desc = 'Go to [N]ext buffer' })
 vim.keymap.set('n', '<leader>b', ':bprev<CR>', { silent = true, desc = 'Go to Previous [B]uffer' })
 vim.keymap.set('n', '<leader>x', ':bd<CR>', { silent = true, desc = '[X] Close buffer' })
+vim.keymap.set('n', '<leader>u', ':buffers<CR>', { silent = true, desc = 'Check b[U]ffers' })
 
 -- ensure we stay in visual mode after shifting
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
