@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>z', function()
   -- iterate through the list of buffers
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     -- get the buffer type
-    local buftype = vim.api.nvim_buf_get_option(buf, 'buftype')
+    local buftype = vim.bo[buf].buftype
     -- open the buffer if it's a terminal
     if buftype == 'terminal' then
       vim.api.nvim_set_current_buf(buf)
@@ -57,6 +57,9 @@ vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 -- fugitive keymaps
 vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = 'Pull up [G]it status tool' })
 vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':GBrowse main:%<CR>', { silent = true, desc = 'View on Git[H]ub' })
+vim.keymap.set({ 'n', 'v' }, '<leader>gH', ':Git push origin head<CR>', { silent = true, desc = 'Pus[H] to upstream' })
+vim.keymap.set({ 'n', 'v' }, '<leader>ga', ':Git branch<CR>', { silent = true, desc = 'Open br[A]nch tool' })
+vim.keymap.set({ 'n', 'v' }, '<leader>gC', ':Git checkout -b ', { desc = '[C]heckout new branch' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`

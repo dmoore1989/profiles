@@ -40,7 +40,6 @@ return { -- Adds git related signs to the gutter, as well as utilities for manag
       map('n', '<leader>gb', function()
         gitsigns.blame_line { full = true }
       end, { desc = 'Gitsigns [B]lame line' })
-      map('n', '<leader>gP', gitsigns.preview_hunk_inline, { desc = 'Gitsigns [P]review hunk inline' })
       map('n', '<leader>gB', gitsigns.blame, { desc = 'Gitsigns [B]lame' })
       map('n', '<leader>gt', gitsigns.toggle_current_line_blame, { desc = 'Gitsigns [T]oggle line blame' })
       map('n', '<leader>ge', gitsigns.toggle_deleted, { desc = 'Gitsigns toggle d[E]leted' })
