@@ -57,9 +57,22 @@ vim.keymap.set('v', '>', '>gv', { noremap = true, silent = true })
 -- fugitive keymaps
 vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = 'Pull up [G]it status tool' })
 vim.keymap.set({ 'n', 'v' }, '<leader>gh', ':GBrowse main:%<CR>', { silent = true, desc = 'View on Git[H]ub' })
-vim.keymap.set({ 'n', 'v' }, '<leader>gH', ':Git push origin head<CR>', { silent = true, desc = 'Pus[H] to upstream' })
-vim.keymap.set({ 'n', 'v' }, '<leader>ga', ':Git branch<CR>', { silent = true, desc = 'Open br[A]nch tool' })
-vim.keymap.set({ 'n', 'v' }, '<leader>gC', ':Git checkout -b ', { desc = '[C]heckout new branch' })
+vim.keymap.set('n', '<leader>gH', ':Git push origin head<CR>', { silent = true, desc = 'Pus[H] to upstream' })
+vim.keymap.set('n', '<leader>gF', ':Git push origin head -f<CR>', { silent = true, desc = '[F]orce push to upstream' })
+vim.keymap.set('n', '<leader>ga', ':Git branch<CR>', { silent = true, desc = 'Open br[A]nch tool' })
+vim.keymap.set('n', '<leader>gC', ':Git checkout -b ', { desc = '[C]heckout new branch' })
+vim.keymap.set('n', '<leader>gM', function()
+  vim.cmd 'Git checkout main'
+  vim.cmd 'Git pull'
+  vim.cmd 'Git checkout -'
+  vim.cmd 'Git rebase main'
+end, { desc = 'Rebase on [M]ain' })
+vim.keymap.set('n', '<leader>gG', function()
+  vim.cmd 'Git checkout main'
+  vim.cmd 'Git pull'
+  vim.cmd 'Git checkout -'
+  vim.cmd 'Git merge main'
+end, { desc = 'Mer[G]ge on main' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
