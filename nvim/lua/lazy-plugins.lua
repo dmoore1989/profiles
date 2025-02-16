@@ -34,7 +34,8 @@ require('lazy').setup {
   require 'lazy-packages.mini',
   require 'lazy-packages.treesitter',
   require 'kickstart.plugins.indent_line',
-  require 'kickstart.plugins.neo-tree',
+  -- require 'kickstart.plugins.neo-tree',
+  require 'lazy-packages.oil',
 
   ui = require 'lazy-packages.ui',
 }
