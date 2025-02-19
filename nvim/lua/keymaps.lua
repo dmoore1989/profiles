@@ -54,6 +54,7 @@ vim.keymap.set('n', '<leader>x', function()
   vim.cmd('bd ' .. number)
 end, { silent = true, desc = '[X] Close buffer' })
 vim.keymap.set('n', '<leader>u', ':buffers<CR>', { silent = true, desc = 'Check b[U]ffers' })
+vim.keymap.set('n', '<leader>o', ':enew<CR>', { silent = true, desc = '[O]pen a new blank buffer' })
 
 -- ensure we stay in visual mode after shifting
 vim.keymap.set('v', '<', '<gv', { noremap = true, silent = true })
