@@ -50,6 +50,10 @@ vim.keymap.set('n', '<leader>n', ':bnext<CR>', { silent = true, desc = 'Go to [N
 vim.keymap.set('n', '<leader>b', ':bprev<CR>', { silent = true, desc = 'Go to Previous [B]uffer' })
 vim.keymap.set('n', '<leader>x', function()
   local number = vim.fn.bufnr()
+  if vim.bo[number].buftype == 'acwrite' then
+    vim.cmd 'bd'
+    return
+  end
   vim.cmd 'bn'
   vim.cmd('bd ' .. number)
 end, { silent = true, desc = '[X] Close buffer' })
