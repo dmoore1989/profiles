@@ -53,6 +53,9 @@ vim.keymap.set('n', '<leader>x', function()
   if vim.bo[number].buftype == 'acwrite' then
     vim.cmd 'bd'
     return
+  elseif vim.bo[number].buftype == 'terminal' then
+    vim.cmd 'bn'
+    return
   end
   vim.cmd 'bn'
   vim.cmd('bd ' .. number)
@@ -83,6 +86,10 @@ vim.keymap.set('n', '<leader>gG', function()
   vim.cmd 'Git checkout -'
   vim.cmd 'Git merge main'
 end, { desc = 'Mer[G]ge on main' })
+vim.keymap.set('n', '<leader>gL', function()
+  vim.cmd 'Git checkout main'
+  vim.cmd 'Git pull'
+end, { desc = 'Pu[L]l down main' })
 
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
