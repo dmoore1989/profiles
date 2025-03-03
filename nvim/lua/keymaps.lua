@@ -51,7 +51,7 @@ vim.keymap.set('n', '<leader>b', ':bprev<CR>', { silent = true, desc = 'Go to Pr
 vim.keymap.set('n', '<leader>x', function()
   local number = vim.fn.bufnr()
   if vim.bo[number].buftype == 'acwrite' then
-    vim.cmd 'bd'
+    vim.cmd 'Oil quit'
     return
   elseif vim.bo[number].buftype == 'terminal' then
     vim.cmd 'bn'
