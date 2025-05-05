@@ -8,10 +8,10 @@ return {
     provider = 'openai',
     openai = {
       endpoint = 'https://api.openai.com/v1',
-      model = 'gpt-4o', -- your desired model (or use gpt-4o, etc.)
+      model = 'gpt-4.1', -- your desired model (or use gpt-4o, etc.)
       timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
       temperature = 0,
-      --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+      reasoning_effort = 'high',
     },
     mappings = {
       sidebar = {
@@ -19,6 +19,7 @@ return {
       },
     },
     debug = true,
+    custom_tools = require 'lazy-packages/custom_avante_tools',
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
   build = 'make',
