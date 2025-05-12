@@ -59,9 +59,13 @@ vim.opt.inccommand = 'split'
 -- Show which line your cursor is on
 vim.opt.cursorline = true
 
+-- allow for inline diagnostics
+vim.diagnostic.config { virtual_text = true }
+
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 vim.g.copilot_node_command = '/Users/douglasmoore/.asdf/installs/nodejs/23.3.0/bin/node'
 vim.g.autoread = true
+vim.lsp.set_log_level 'INFO'
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2

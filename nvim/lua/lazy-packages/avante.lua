@@ -18,7 +18,6 @@ return {
         close = 'q',
       },
     },
-    debug = true,
     custom_tools = require 'lazy-packages/custom_avante_tools',
   },
   -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
