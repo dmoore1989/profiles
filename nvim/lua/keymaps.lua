@@ -105,3 +105,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+vim.keymap.set('n', '<leader>h', 'i- [ ] ', { desc = 'Insert a new c[H]eckbox' })
+vim.keymap.set('n', '<leader>H', ':s/- \\[ ]/- [x]<CR>', { silent = true, desc = 'C[H]eck off checkbox' })
