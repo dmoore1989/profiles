@@ -6,12 +6,16 @@ return {
     -- add any opts here
     -- for example
     provider = 'openai',
-    openai = {
-      endpoint = 'https://api.openai.com/v1',
-      model = 'gpt-4.1', -- your desired model (or use gpt-4o, etc.)
-      timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
-      temperature = 0,
-      reasoning_effort = 'high',
+    providers = {
+      openai = {
+        endpoint = 'https://api.openai.com/v1',
+        model = 'gpt-4.1', -- your desired model (or use gpt-4o, etc.)
+        timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
+        extra_request_body = {
+          temperature = 0,
+          reasoning_effort = 'high',
+        },
+      },
     },
     mappings = {
       sidebar = {
