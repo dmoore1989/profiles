@@ -106,5 +106,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
-vim.keymap.set('n', '<leader>h', 'i- [ ] ', { desc = 'Insert a new c[H]eckbox' })
-vim.keymap.set('n', '<leader>H', ':s/- \\[ ]/- [x]<CR>', { silent = true, desc = 'C[H]eck off checkbox' })
+vim.keymap.set('n', '<leader>h', function()
+  local line = vim.api.nvim_get_current_line()
+  if line:find '^%- %[ %]' then
+    -- Toggle to checked
+    local replacement_string = line:gsub('^%- %[ %]', '- [x] ')
+    vim.api.nvim_set_current_line(replacement_string)
+  elseif line:find '^%- %[x%]' then
+    -- Toggle to unchecked
+    local replacement_string = line:gsub('^%- %[x%]', '- [ ] ')
+    vim.api.nvim_set_current_line(replacement_string)
+  else
+    -- Prepend checkbox
+    vim.api.nvim_set_current_line('- [ ] ' .. line)
+  end
+end, { desc = 'Toggle or add markdown checkbox' })
