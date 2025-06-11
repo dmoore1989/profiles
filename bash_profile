@@ -19,7 +19,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   fi
 
 
-alias printhello='echo "Hello, World!"'
 alias bp='nvim ~/.zshrc'
 alias gc='git commit -m'
 alias ga='git add -A'
