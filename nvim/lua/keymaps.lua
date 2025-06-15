@@ -119,6 +119,9 @@ local function add_checkbox()
   else
     -- Prepend checkbox
     vim.api.nvim_set_current_line('- [ ] ' .. line)
+    -- Move cursor right by 7 (length of '- [ ] ')
+    local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+    vim.api.nvim_win_set_cursor(0, { row, col + 6 })
   end
 end
 
