@@ -207,7 +207,6 @@ return {
           },
         },
       },
-      sqls = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes = { ...},
